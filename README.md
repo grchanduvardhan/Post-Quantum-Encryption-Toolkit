@@ -1,9 +1,9 @@
-# 🚀 Post-Quantum File Encryption Toolkit
+# Post-Quantum Encryption Toolkit
 
 A comprehensive toolkit for encrypting and decrypting files using **Post-Quantum Cryptography (PQC)** with a hybrid cryptosystem approach.
 This implementation uses **NIST-recommended PQC algorithms** to provide **quantum-resistant encryption**.
 
-✨ **Now includes a beautiful web interface!**
+ **Now includes a beautiful web interface!**
 Choose between the modern browser-based UI or the automated command-line interface.
 
 ---
@@ -309,5 +309,6 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
 
 
