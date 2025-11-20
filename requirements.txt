@@ -1,0 +1,25 @@
+# Post-Quantum File Encryption Toolkit - Dependencies
+# Python 3.12+ recommended (quantcrypt has pre-built binaries for 3.12)
+
+# Web Framework
+Flask>=3.0.0
+Werkzeug>=3.0.0
+
+# Core cryptography library for AES-256-GCM
+cryptography>=41.0.0
+
+# Post-Quantum Cryptography libraries
+# Option 1: quantcrypt (recommended - tested and working with Python 3.12)
+quantcrypt>=0.1.0
+
+# Option 2: pqcrypto (alternative)
+# pqcrypto>=0.1.0
+
+# Option 3: Individual packages
+# kyber>=0.1.0
+# dilithium>=0.1.0
+
+# Note: The actual PQC library availability may vary.
+# The code includes fallback mechanisms to work with different libraries.
+# Please check which library is available for your platform and install accordingly.
+

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Quantum Encryption Toolkit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <h1>Post-Quantum Encryption Toolkit</h1>
+                </div>
+                <p class="subtitle">Quantum-Resistant File Encryption & Decryption</p>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="keys">
+                <i class="fas fa-key"></i> Key Management
+            </button>
+            <button class="tab-btn" data-tab="encrypt">
+                <i class="fas fa-lock"></i> Encrypt
+            </button>
+            <button class="tab-btn" data-tab="decrypt">
+                <i class="fas fa-unlock"></i> Decrypt
+            </button>
+        </nav>
+
+        <!-- Key Management Tab -->
+        <div class="tab-content active" id="keys-tab">
+            <div class="card">
+                <h2><i class="fas fa-key"></i> Generate New Key Pair</h2>
+                <div class="form-group">
+                    <label for="user-id">User ID:</label>
+                    <input type="text" id="user-id" placeholder="e.g., alice, bob" required>
+                    <small>Enter a unique identifier for this key pair</small>
+                </div>
+                <button class="btn btn-primary" onclick="generateKeys()">
+                    <i class="fas fa-plus-circle"></i> Generate Keys
+                </button>
+            </div>
+
+            <div class="card">
+                <h2><i class="fas fa-list"></i> Existing Key Pairs</h2>
+                <div id="keys-list">
+                    <div class="loading">Loading keys...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Encrypt Tab -->
+        <div class="tab-content" id="encrypt-tab">
+            <div class="card">
+                <h2><i class="fas fa-lock"></i> Encrypt File</h2>
+                <form id="encrypt-form" onsubmit="encryptFile(event)">
+                    <div class="form-group mode-group">
+                        <label><i class="fas fa-sliders-h"></i> Encryption Mode</label>
+                        <div class="mode-options">
+                            <label class="mode-option">
+                                <input type="radio" name="encrypt-mode" value="confidential" checked>
+                                <span>Confidential Encryption</span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="encrypt-mode" value="authenticated">
+                                <span>Authentication Encryption (Digital Signature)</span>
+                            </label>
+                        </div>
+                        <small>Select whether to include a digital signature for authenticity.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="encrypt-file">
+                            <i class="fas fa-file"></i> Select File to Encrypt
+                        </label>
+                        <input type="file" id="encrypt-file" required>
+                        <small>Maximum file size: 100MB</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="encrypt-recipient-key">
+                            <i class="fas fa-key"></i> Recipient's Public KEM Key
+                        </label>
+                        <input type="file" id="encrypt-recipient-key" accept=".key" required>
+                        <small>Select the recipient's public KEM key (*_kem_public.key)</small>
+                    </div>
+
+                    <div class="form-group hidden" id="encrypt-signer-group">
+                        <label for="encrypt-signer-key">
+                            <i class="fas fa-signature"></i> Signer's Private DSS Key (Optional)
+                        </label>
+                        <input type="file" id="encrypt-signer-key" accept=".key">
+                        <small>Required when using Authentication Encryption</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-lock"></i> Encrypt File
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Decrypt Tab -->
+        <div class="tab-content" id="decrypt-tab">
+            <div class="card">
+                <h2><i class="fas fa-unlock"></i> Decrypt File</h2>
+                <form id="decrypt-form" onsubmit="decryptFile(event)">
+                    <div class="form-group mode-group">
+                        <label><i class="fas fa-sliders-h"></i> Decryption Mode</label>
+                        <div class="mode-options">
+                            <label class="mode-option">
+                                <input type="radio" name="decrypt-mode" value="confidential" checked>
+                                <span>Confidential Decryption</span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="decrypt-mode" value="authenticated">
+                                <span>Authentication Decryption (Verify Signature)</span>
+                            </label>
+                        </div>
+                        <small>Choose whether to verify the digital signature during decryption.</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="decrypt-file">
+                            <i class="fas fa-file"></i> Select Encrypted File (.pqc)
+                        </label>
+                        <input type="file" id="decrypt-file" accept=".pqc" required>
+                        <small>Select a file encrypted with this toolkit</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="decrypt-recipient-key">
+                            <i class="fas fa-key"></i> Your Private KEM Key
+                        </label>
+                        <input type="file" id="decrypt-recipient-key" accept=".key" required>
+                        <small>Select your private KEM key (*_kem_private.key)</small>
+                    </div>
+
+                    <div class="form-group hidden" id="decrypt-signer-group">
+                        <label for="decrypt-signer-key">
+                            <i class="fas fa-signature"></i> Signer's Public DSS Key (Optional)
+                        </label>
+                        <input type="file" id="decrypt-signer-key" accept=".key">
+                        <small>Required when using Authentication Decryption</small>
+                    </div>
+
+                    <div class="form-group checkbox-group hidden" id="decrypt-require-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="decrypt-require-signature">
+                            <span>Require valid digital signature</span>
+                        </label>
+                        <small>Rejects files that are not signed or fail verification</small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-unlock"></i> Decrypt File
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notification Area -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
