@@ -32,7 +32,7 @@ Choose between the modern browser-based UI or the automated command-line interfa
 
 ```bash
 git clone https://github.com/grchanduvardhan/Post-Quantum-Encryption-Toolkit.git
-cd <repo-name>
+cd Post-Quantum-Encryption-Toolkit
 ```
 
 ### 2. Install Dependencies
@@ -87,7 +87,7 @@ A polished web interface is included.
 ### Start the Web Server:
 
 ```bash
-python start_web.py
+python app.py
 ```
 
 ### Access the UI:
@@ -309,4 +309,5 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
 
