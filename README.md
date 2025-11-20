@@ -309,15 +309,3 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-
----
-
-If you want, I can also:
-
-✅ Add shields/badges
-✅ Add a banner or ASCII art
-✅ Add installation GIFs
-✅ Make a professional project logo
-
-Just tell me!
-
