@@ -1,35 +1,69 @@
-Here is the **complete README in pure Markdown format** — clean, aligned, ready to copy-paste directly into GitHub.
+# 🛡️ Post-Quantum File Encryption Toolkit
 
----
+A comprehensive toolkit for encrypting and decrypting files using **Post-Quantum Cryptography (PQC)** with a hybrid cryptosystem approach. This implementation uses **NIST-recommended PQC algorithms** to provide quantum-resistant encryption.
 
-````markdown
-# 🚀 Post-Quantum File Encryption Toolkit
-
-A comprehensive toolkit for encrypting and decrypting files using **Post-Quantum Cryptography (PQC)** with a hybrid cryptosystem approach.  
-This implementation uses **NIST-recommended PQC algorithms** to provide **quantum-resistant encryption**.
-
-✨ **Now includes a beautiful web interface!**  
-Choose between the modern browser-based UI or the automated command-line interface.
+✨ **Now includes a beautiful web interface!** Use the modern web app for an intuitive, user-friendly experience, or use the CLI for automation and scripting.
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Language:** Python 3.10+
-- **PQC Libraries:** Supports `quantcrypt`, `pqcrypto`, or standalone `kyber` / `dilithium`
-- **Symmetric Encryption:** AES-256-GCM (`cryptography`)
+| Component | Technology / Library | Standard |
+| :--- | :--- | :--- |
+| **Language** | Python 3.10+ | - |
+| **PQC Library** | `quantcrypt`, `pqcrypto`, or individual packages | - |
+| **Symmetric Encryption** | `cryptography` library | AES-256-GCM |
 
 ---
 
-## 🔐 Algorithms Used
+## 🔐 Algorithms
 
-| Purpose | Algorithm | Standard |
-|--------|-----------|----------|
-| Key Encapsulation Mechanism (KEM) | **ML-KEM-768 (Kyber-768)** | NIST PQC |
-| Digital Signatures (Optional) | **ML-DSA-87 (Dilithium-3)** | NIST PQC |
-| Symmetric Encryption | **AES-256-GCM** | Industry Standard |
+| Algorithm | Type | Standard | Purpose |
+| :--- | :--- | :--- | :--- |
+| **ML-KEM-768 (Kyber-768)** | Key Encapsulation Mechanism (KEM) | NIST PQC | Key exchange |
+| **ML-DSA-87 (Dilithium-3)** | Digital Signature Scheme (DSS) | NIST PQC | Integrity and Authentication (Optional) |
+| **AES-256-GCM** | Symmetric Cipher | NIST | Bulk file encryption |
 
 ---
+
+## 📦 Installation
+
+1.  **Clone or download this repository**
+
+2.  **Install dependencies**:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Install a PQC library** (choose one):
+
+    ```bash
+    # Option 1: Try quantcrypt (if available)
+    pip install quantcrypt
+    # Note: quantcrypt may require additional binary dependencies.
+    # If you get "Failed to import clean binaries" errors, try:
+    # - Reinstalling: pip uninstall quantcrypt && pip install quantcrypt
+    # - Or use one of the alternatives below
+
+    # Option 2: Try pqcrypto
+    pip install pqcrypto
+
+    # Option 3: Individual packages
+    pip install kyber dilithium
+    ```
+
+    > **Note**: The toolkit includes fallback mechanisms to work with different PQC libraries. If `quantcrypt` fails due to missing binaries, the toolkit will automatically try other available libraries.
+
+---
+
+## ✅ Verification
+
+After installation, verify everything works:
+
+```bash
+python test_pqc_toolkit.py
+
+
 
 ## 📦 Installation
 
@@ -313,16 +347,3 @@ This project is provided **for educational and research purposes**.
 
 Contributions, issues, and feature requests are welcome!
 
-```
-
----
-
-If you want, I can also generate:
-
-✅ Shields/badges  
-✅ A banner/logo  
-✅ A professional project description summary  
-✅ A screenshot section  
-
-Just tell me!
-```
