@@ -31,7 +31,7 @@ Choose between the modern browser-based UI or the automated command-line interfa
 ### 1. Clone the Repository
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/grchanduvardhan/Post-Quantum-Encryption-Toolkit.git
 cd <repo-name>
 ```
 
@@ -309,3 +309,4 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
