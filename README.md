@@ -1,207 +1,328 @@
+Here is your **perfectly formatted, clean, well-aligned, GitHub-ready README.md** — optimized for readability, professional presentation, and Markdown styling.
 
-# 🛡️ Post-Quantum File Encryption Toolkit
+You can **copy–paste directly** into GitHub.
 
-A comprehensive, hybrid cryptosystem toolkit for encrypting and decrypting files using **Post-Quantum Cryptography (PQC)**. This implementation leverages NIST-recommended PQC algorithms to provide robust, quantum-resistant file protection.
+---
 
-✨ **Now includes a beautiful web interface!** Use the modern web app for an intuitive, user-friendly experience, or use the powerful CLI for automation and scripting.
+# 🚀 Post-Quantum File Encryption Toolkit
+
+A comprehensive toolkit for encrypting and decrypting files using **Post-Quantum Cryptography (PQC)** with a hybrid cryptosystem approach.
+This implementation uses **NIST-recommended PQC algorithms** to provide **quantum-resistant encryption**.
+
+✨ **Now includes a beautiful web interface!**
+Choose between the modern browser-based UI or the automated command-line interface.
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Component | Technology / Algorithm | Purpose |
-| :--- | :--- | :--- |
-| **Language** | Python 3.10+ | Core implementation |
-| **PQC Library** | `quantcrypt`, `pqcrypto`, or individual packages | Post-Quantum Cryptography Primitives |
-| **Symmetric Cipher** | `cryptography` (AES-256-GCM) | Bulk file encryption |
-| **Key Exchange (KEM)** | **ML-KEM-768 (Kyber-768)** | Key Encapsulation Mechanism |
-| **Digital Signature (DSS)** | **ML-DSA-87 (Dilithium-3)** | Integrity and Authentication |
+* **Language:** Python 3.10+
+* **PQC Libraries:** Supports `quantcrypt`, `pqcrypto`, or standalone `kyber` / `dilithium` packages
+* **Symmetric Encryption:** AES-256-GCM via `cryptography` library
+
+---
+
+## 🔐 Algorithms Used
+
+| Purpose                           | Algorithm                   | Standard          |
+| --------------------------------- | --------------------------- | ----------------- |
+| Key Encapsulation Mechanism (KEM) | **ML-KEM-768 (Kyber-768)**  | NIST PQC          |
+| Digital Signatures (Optional)     | **ML-DSA-87 (Dilithium-3)** | NIST PQC          |
+| Symmetric Encryption              | **AES-256-GCM**             | Industry Standard |
 
 ---
 
 ## 📦 Installation
 
-1.  **Clone or download this repository:**
+### 1. Clone the Repository
 
-    ```bash
-    git clone [https://github.com/YourUsername/your-repo-name.git](https://github.com/YourUsername/your-repo-name.git)
-    cd your-repo-name
-    ```
+```bash
+git clone <repo-url>
+cd <repo-name>
+```
 
-2.  **Install dependencies:**
+### 2. Install Dependencies
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+pip install -r requirements.txt
+```
 
-3.  **Install a PQC library** (choose one option):
+### 3. Install a PQC Library
 
-    ```bash
-    # Option 1: Recommended - quantcrypt
-    pip install quantcrypt
+Pick **one** option:
 
-    # Option 2: Alternative - pqcrypto
-    # pip install pqcrypto
+```bash
+# Option 1: Try quantcrypt (if supported on your system)
+pip install quantcrypt
 
-    # Option 3: Fallback - Individual packages
-    # pip install kyber dilithium
-    ```
-    > 📝 **Note**: The toolkit includes fallback mechanisms. If the primary library (`quantcrypt`) fails, the toolkit will automatically attempt to use other available PQC libraries.
+# Option 2: pqcrypto (stable alternative)
+pip install pqcrypto
+
+# Option 3: Individual PQC packages
+pip install kyber dilithium
+```
+
+> ✔️ The toolkit automatically switches between available PQC libraries.
+> ✔️ If `quantcrypt` shows "Failed to import clean binaries", use options 2 or 3.
 
 ---
 
 ## ✅ Verification
 
-Ensure everything is working correctly by running the comprehensive test script:
+Run the full test suite:
 
 ```bash
 python test_pqc_toolkit.py
-````
+```
 
-This test will:
+This test verifies:
 
-  * ✅ Verify PQC library functionality (ML-KEM-768 and ML-DSA-87).
-  * ✅ Test all core toolkit modules (`key_manager`, `encryptor`, `decryptor`).
-  * ✅ Run a complete encryption/decryption workflow.
+* ML-KEM-768 functionality
+* ML-DSA-87 signing & verification
+* End-to-end encryption & decryption workflow
+* Toolkit module integrity
 
-If all tests pass, you are ready to use the toolkit\!
+If all tests pass → **Toolkit ready to use**.
 
------
+---
 
-## 🌐 Web Application (Recommended)
+# 🌐 Web Application
 
-The web app provides a modern, user-friendly interface for all encryption and decryption tasks.
+A polished web interface is included.
 
-### Quick Start (Web App)
+### Start the Web Server:
 
-1.  **Start the web server:**
+```bash
+python start_web.py
+```
 
-    ```bash
-    python start_web.py
-    ```
+### Access the UI:
 
-2.  **Open your browser:**
+Open in your browser:
+`http://localhost:5000`
 
-    Navigate to `http://localhost:5000`
+### Features:
 
-3.  **Features:**
+* Generate KEM & DSS key pairs
+* Drag-and-drop file encryption
+* Confidential or authenticated encryption
+* Automatic signed-envelope verification
+* Toggle: **Require Signature** for strict verification
+* One-click decryption and download
 
-      * **Key Management**: Generate key pairs for multiple users.
-      * **Drag-and-Drop**: Easily upload files for encryption.
-      * **Mode Selection**: Choose between **Confidential Encryption** or **Authentication Encryption (Digital Signature)**.
-      * **Signature Enforcement**: Toggle verification requirements during decryption.
+See **WEB_APP_GUIDE.md** for detailed instructions.
 
-See the dedicated guide for detailed web application documentation: **[WEB\_APP\_GUIDE.md](https://www.google.com/search?q=WEB_APP_GUIDE.md)**
+---
 
------
+# 🚀 Command-Line Usage (CLI)
 
-## 🚀 CLI Usage
+---
 
-The Command Line Interface (CLI) is perfect for scripting and automation.
-
-### 1\. Generate Key Pairs
-
-Generates ML-KEM-768 (KEM) and ML-DSA-87 (DSS) key pairs for a user.
+## 1. 🔑 Generate Key Pairs
 
 ```bash
 python main.py keygen <user_id>
 ```
 
-**Example:**
+Example:
 
 ```bash
 python main.py keygen alice
 ```
 
-This creates the following structure in the `keys/` directory:
+Generated structure:
 
 ```
 keys/
 └── alice/
-    ├── alice_kem_public.key   # For recipient to receive encrypted files
-    ├── alice_kem_private.key  # For recipient to decrypt files
-    ├── alice_dss_public.key   # For others to verify Alice's signature
-    └── alice_dss_private.key  # For Alice to sign files
+    ├── alice_kem_public.key
+    ├── alice_kem_private.key
+    ├── alice_dss_public.key
+    └── alice_dss_private.key
 ```
 
-### 2\. Encrypt a File
+---
 
-Encrypts a file using the **recipient's public KEM key**. Optionally, a **signer's private DSS key** can be used to sign the encrypted file for authentication.
+## 2. 🔒 Encrypt a File
 
 ```bash
 python main.py encrypt <filepath> <recipient_public_kem_key> [--signer-key <signer_private_dss_key>]
 ```
 
-| Mode | Command Example | Output |
-| :--- | :--- | :--- |
-| **Confidentiality Only** | `python main.py encrypt doc.pdf keys/alice/alice_kem_public.key` | `doc.pdf.pqc` |
-| **Confidentiality & Signature** | `python main.py encrypt doc.pdf keys/alice/alice_kem_public.key --signer-key keys/bob/bob_dss_private.key` | `doc.pdf.pqc` |
-
-### 3\. Decrypt a File
-
-Decrypts a file using the **recipient's private KEM key**.
+### Without Signature:
 
 ```bash
-python main.py decrypt <encrypted_filepath> <recipient_private_kem_key> [--signer-key <signer_public_dss_key>] [--require-signature]
+python main.py encrypt document.pdf keys/alice/alice_kem_public.key
 ```
 
-| Mode | Command Example | Result |
-| :--- | :--- | :--- |
-| **Decryption Only** | `python main.py decrypt doc.pqc keys/alice/alice_kem_private.key` | `doc-decrypted.pdf` |
-| **Decryption & Verify** | `python main.py decrypt doc.pqc keys/alice/alice_kem_private.key --signer-key keys/bob/bob_dss_public.key` | Verifies signature, then decrypts. |
-| **Verify & Enforce** | `python main.py decrypt doc.pqc ... --signer-key ... --require-signature` | **Rejects** file if unsigned or invalid signature. |
+### With Signature:
 
------
+```bash
+python main.py encrypt document.pdf keys/alice/alice_kem_public.key \
+    --signer-key keys/alice/alice_dss_private.key
+```
 
-## 📁 File Format (`.pqc`)
+Output file → `document.pdf.pqc`
 
-The encrypted file format is structured to ensure robust and verifiable security:
+---
 
-| Component | Size (Bytes) | Description |
-| :--- | :--- | :--- |
-| **Magic Number** | 4 | `PQC1` to identify the file format. |
-| **Metadata Header** | $\approx 13$ | Algorithm flags, lengths, and the 12-byte **Nonce** for AES-GCM. |
-| **ML-KEM-768 Ciphertext** | Variable | Encrypted session key for the file. |
-| **AES-256 GCM Tag** | 16 | Authentication tag for the bulk data. |
-| **ML-DSA-87 Signature** | Variable | **(Optional)** Digital signature over the entire envelope. |
-| **AES-256 Ciphertext** | Variable | The bulk encrypted file data. |
+## 3. 🔓 Decrypt a File
 
-> **Security Note**: When signatures are used, the signer protects the **entire encrypted envelope** (header, KEM ciphertext, GCM tag, and AES ciphertext) to provide tamper-evident authenticity and provenance.
+```bash
+python main.py decrypt <encrypted_filepath> <recipient_private_kem_key> \
+    [--signer-key <signer_public_dss_key>] [--require-signature]
+```
 
------
+### Basic Decryption:
 
-## 🔒 Security Features
+```bash
+python main.py decrypt document.pdf.pqc keys/alice/alice_kem_private.key
+```
 
-  * **Hybrid Encryption**: Leverages slow, quantum-resistant KEM for the small session key and fast, traditional AES-256-GCM for bulk file encryption.
-  * **Authenticated Encryption**: AES-256-GCM provides both **Confidentiality** and **Authenticity** for the file contents.
-  * **Digital Signatures**: ML-DSA-87 signatures cover the entire encrypted payload for **Integrity** and **Provenance**.
-  * **Quantum-Resistant**: Uses NIST-standardized algorithms (Kyber-768 and Dilithium-3).
+### Verify Signature:
 
------
+```bash
+python main.py decrypt document.pdf.pqc keys/alice/alice_kem_private.key \
+    --signer-key keys/alice/alice_dss_public.key
+```
 
-## ⚠️ Important Notes
+### Enforce Signature (reject unsigned files):
 
-1.  **Key Security**: Private keys must be kept absolutely secure. Loss of a private key results in permanent data loss for encrypted files.
-2.  **File Size**: The use of AES-256-GCM ensures efficient, high-performance encryption for files of any size.
-3.  **Trust**: Always verify signatures when decrypting files from untrusted sources.
+```bash
+python main.py decrypt document.pdf.pqc keys/alice/alice_kem_private.key \
+    --signer-key keys/alice/alice_dss_public.key --require-signature
+```
 
-## 📚 References
+Decrypted output → `document-decrypted.pdf`
 
-  * [NIST Post-Quantum Cryptography Standardization](https://csrc.nist.gov/projects/post-quantum-cryptography)
-  * [ML-KEM (Kyber) Documentation](https://pq-crystals.org/kyber/)
-  * [ML-DSA (Dilithium) Documentation](https://pq-crystals.org/dilithium/)
+---
 
------
+# 📁 Encrypted File Format (`.pqc`)
 
-## 🤝 Contributing
+The encrypted file contains:
 
-Contributions, issues, and feature requests are welcome\! Feel free to open a pull request.
+1. **Magic Number**: `PQC1` (4 bytes)
+2. **Metadata Header**
 
-## 📄 License
+   * Algorithm flags (1 byte)
+   * KEM ciphertext length (4 bytes)
+   * GCM tag length (4 bytes)
+   * Signature length (4 bytes)
+   * Nonce (12 bytes)
+3. **KEM Ciphertext (ML-KEM-768)**
+4. **AES-GCM Tag** (16 bytes)
+5. **Signature (ML-DSA-87)** *(if used)*
+6. **AES-256-GCM Ciphertext**
 
-This project is provided as-is for educational and research purposes.
+Signatures protect the **entire encrypted envelope** including the metadata.
 
------
+---
 
-Would you like me to help you create an initial `WEB_APP_GUIDE.md` based on the features you described, or generate a sample `requirements.txt` file?
+# 🔒 Security Features
 
+* Hybrid PQC + AES-GCM scheme
+* Authenticated encryption
+* Post-quantum secure digital signatures
+* Signature-enforced decryption
+* Quantum-resistant and NIST-standardized
+* Library fallback support
+
+---
+
+# 📝 Supported File Types
+
+Works with any file type:
+
+* `.txt`, `.csv`, `.json`
+* `.pdf`, `.docx`, `.xlsx`
+* Images: `.jpg`, `.png`
+* Binaries: `.exe`, `.zip`, `.tar`
+
+All files are processed as raw binary streams.
+
+---
+
+# 🏗️ Project Structure
+
+```
+.
+├── app.py                # Flask web application
+├── start_web.py          # Web server launcher
+├── main.py               # CLI entry point
+├── key_manager.py        # Key generation & storage
+├── encryptor.py          # Encryption implementation
+├── decryptor.py          # Decryption implementation
+├── templates/
+│   └── index.html        # Web UI
+├── static/
+│   ├── style.css         # Web styling
+│   └── script.js         # Frontend JS
+├── requirements.txt
+├── README.md
+└── WEB_APP_GUIDE.md
+```
+
+---
+
+# ⚠️ Important Notes
+
+1. **Never share private keys.**
+2. **Back up all private keys** — losing them means losing access to encrypted data.
+3. Compatibility depends on the installed PQC library.
+4. AES-256-GCM ensures fast encryption for large files.
+5. Always verify signatures from untrusted sources.
+
+---
+
+# 🐛 Troubleshooting
+
+### ❌ "No PQC library found"
+
+Install any supported library:
+
+```bash
+pip install quantcrypt
+pip install pqcrypto
+pip install kyber dilithium
+```
+
+### ❌ "Signature verification failed"
+
+* Wrong DSS public key
+* File modified or corrupted
+
+### ❌ "Decryption failed"
+
+* Wrong private KEM key
+* Encrypted file corrupted
+
+---
+
+# 📚 References
+
+* NIST PQC Standardization
+* ML-KEM (Kyber)
+* ML-DSA (Dilithium)
+
+---
+
+# 📄 License
+
+This project is provided for **educational and research purposes**.
+
+---
+
+# 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+---
+
+If you want, I can also:
+
+✅ Add shields/badges
+✅ Add a banner or ASCII art
+✅ Add installation GIFs
+✅ Make a professional project logo
+
+Just tell me!
