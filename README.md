@@ -1,9 +1,3 @@
-Here is your **perfectly formatted, clean, well-aligned, GitHub-ready README.md** — optimized for readability, professional presentation, and Markdown styling.
-
-You can **copy–paste directly** into GitHub.
-
----
-
 # 🚀 Post-Quantum File Encryption Toolkit
 
 A comprehensive toolkit for encrypting and decrypting files using **Post-Quantum Cryptography (PQC)** with a hybrid cryptosystem approach.
@@ -326,3 +320,4 @@ If you want, I can also:
 ✅ Make a professional project logo
 
 Just tell me!
+
