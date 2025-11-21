@@ -32,6 +32,10 @@ Choose between the modern browser-based UI or the automated command-line interfa
 
 ---
 
+## Project Output Images
+
+<img src="project_images/Output%1.png" alt="" width="600"/>
+
 
 ## 📦 Installation
 
@@ -316,6 +320,7 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
 
 
 
