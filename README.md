@@ -34,7 +34,17 @@ Choose between the modern browser-based UI or the automated command-line interfa
 
 ## Project Output Images
 
-<img src="project_images/Output%1.png" alt="" width="600"/>
+<img src="project_images/Output%201.png" alt="" width="600"/>
+<img src="project_images/Output%202.png" alt="" width="600"/>
+<img src="project_images/Output%203.png" alt="" width="600"/>
+<img src="project_images/Output%204.png" alt="" width="600"/>
+
+---
+
+## Simple Architecture Diagram
+<img src="project_images/Architecture%20Diagram.png" alt="" width="600"/>
+
+---
 
 
 ## 📦 Installation
@@ -320,6 +330,7 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
 
 
 
