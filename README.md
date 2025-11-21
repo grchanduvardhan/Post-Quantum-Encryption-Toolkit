@@ -26,6 +26,14 @@ Choose between the modern browser-based UI or the automated command-line interfa
 
 ---
 
+## 🎥 Demo Video
+
+[![Watch the demo](https://img.shields.io/badge/Watch-Demo%20Video-blue?style=for-the-badge&logo=github)](./demo_video.mp4)
+
+---
+
+
+
 ## 📦 Installation
 
 ### 1. Clone the Repository
@@ -309,6 +317,9 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
+
+
 
 
 
