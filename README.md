@@ -32,7 +32,6 @@ Choose between the modern browser-based UI or the automated command-line interfa
 
 ---
 
-![Alt text](output 1/your_image.png)
 
 ## 📦 Installation
 
@@ -317,6 +316,7 @@ This project is provided for **educational and research purposes**.
 # 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
 
 
 
